@@ -1,0 +1,91 @@
+﻿@model List<SpendApp.Models.Expense>
+
+@{
+    ViewData["Title"] = "Expenses";
+}
+
+@if (TempData["Message"] != null)
+{
+    <div id="notification" class="alert alert-success">
+        @TempData["Message"]
+    </div>
+    <script>
+        setTimeout(function () {
+            var notification = document.getElementById('notification');
+            if (notification) {
+                notification.style.display = 'none';
+            }
+        }, 3000); 
+    </script>
+}
+
+<div class="text-center mb-4  d-flex flex-column align-items-center">
+    <h1 class="display-4">Expenses</h1>
+
+    <div class="card shadow-sm d-inline-block mt-3" style="min-width: 300px;">
+        <div class="card-body">
+            <h5 class="card-title mb-2">Total Expenses</h5>
+            <p class="card-text display-6 text-success fw-bold">
+                $@ViewBag.Expenses
+            </p>
+        </div>
+    </div>
+    <button class="btn btn-primary mt-4" onclick="exportToCSV()">Export CSV</button>
+</div>
+
+<table class="table table-bordered table-striped mt-4">
+    <thead>
+        <tr>
+            <th>Value ($)</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var expense in Model)
+        {
+            <tr>
+                <td>@expense.Value</td>
+                <td>@expense.Description</td>
+                <td>
+                    <a class="btn btn-sm" asp-action="CreateEditExpense" asp-route-id="@expense.Id">Edit</a>
+                    <a class="btn btn-sm" asp-action="DeleteExpense" asp-route-id="@expense.Id" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section Scripts {
+    <script>
+        function exportToCSV() {
+            let rows = [['Value', 'Description']];
+            document.querySelectorAll('tbody tr').forEach(row => {
+                const value = row.children[0].innerText;
+                const desc = row.children[1].innerText;
+                rows.push([value, desc]);
+            });
+
+            let csvContent = "data:text/csv;charset=utf-8," +
+                rows.map(e => e.join(",")).join("\n");
+
+            const link = document.createElement("a");
+            link.setAttribute("href", encodeURI(csvContent));
+            link.setAttribute("download", "expenses.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+      
+        document.addEventListener("DOMContentLoaded", () => {
+            let total = 0;
+            document.querySelectorAll('tbody tr').forEach(row => {
+                let val = parseFloat(row.children[0].innerText);
+                if (!isNaN(val)) total += val;
+            });
+            document.getElementById("totalAmount").innerText = "$" + total.toFixed(2);
+        });
+    </script>
+}

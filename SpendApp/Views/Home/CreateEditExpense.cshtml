@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Create / Edit";
+}
+
+@model SpendApp.Models.Expense
+
+<div class="text-center mb-4">
+    <h1 class="display-6">Create or Edit an Expense</h1>
+</div>
+
+<form asp-action="CreateEditExpenseForm" asp-controller="Home" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label class="form-label">Value $</label>
+        <input class="form-control" type="number" asp-for="Value" placeholder="Add a value" step="0.01" />
+        <span class="text-danger" asp-validation-for="Value"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Description</label>
+        <input class="form-control" type="text" asp-for="Description" placeholder="Add a description" />
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Save</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
