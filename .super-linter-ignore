@@ -1,1 +1,8 @@
 SpendApp/wwwroot/lib/
+SpendApp/obj/
+SpendApp/bin/
+SpendApp/Views/Shared/_Layout.cshtml.css
+SpendApp/obj/Debug/net8.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
+SpendApp/obj/Debug/net8.0/scopedcss/bundle/SpendApp.styles.css
+SpendApp/obj/Debug/net8.0/scopedcss/projectbundle/SpendApp.bundle.scp.css
+SpendApp/wwwroot/css/site.css
