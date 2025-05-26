@@ -18,7 +18,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_CSS: true
           FILTER_REGEX_EXCLUDE: |
-            SpendApp/wwwroot/lib/*
-            SpendApp/obj/*
-            SpendApp/**/*.cshtml.css
-            SpendApp/wwwroot/css/site.css
+            ^SpendApp/wwwroot/lib/
+            ^SpendApp/obj/
+            ^SpendApp/bin/
+            ^SpendApp/**/*.cshtml.css$
+            ^SpendApp/**/*.cshtml.rz.scp.css$
+            ^SpendApp/**/*.bundle.scp.css$
+            ^SpendApp/wwwroot/css/site.css$
