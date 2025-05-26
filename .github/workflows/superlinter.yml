@@ -17,4 +17,9 @@ jobs:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_CSS: true
-          FILTER_REGEX_EXCLUDE: SpendApp/wwwroot/lib/*
+          FILTER_REGEX_EXCLUDE: >
+            ^SpendApp/wwwroot/lib/
+            |^SpendApp/obj/
+            |^SpendApp/bin/
+            |^SpendApp/Views/Shared/_Layout\.cshtml\.css$
+            |^SpendApp/wwwroot/css/site\.css$
