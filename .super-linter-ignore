@@ -1,7 +1,1 @@
 SpendApp/wwwroot/lib/
-SpendApp/obj/
-SpendApp/bin/
-SpendApp/Views/Shared/_Layout.cshtml.css
-SpendApp/wwwroot/css/site.css
-SpendApp/**/*.rz.scp.css
-SpendApp/**/*.bundle.scp.css
