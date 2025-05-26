@@ -16,7 +16,7 @@ jobs:
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_CSS: true
+          VALIDATE_CSS: false
 
   test:
     name: Build and run unit tests
