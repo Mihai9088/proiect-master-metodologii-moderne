@@ -21,8 +21,8 @@ namespace SpendApp.Controllers
             return View();
         }
 
-        public IActionResult Expenses() 
-        { 
+        public IActionResult Expenses()
+        {
             var allExpenses = _context.Expenses.ToList();
             var totalExpenses = allExpenses.Sum(x => x.Value);
             ViewBag.Expenses = totalExpenses;
@@ -74,10 +74,10 @@ namespace SpendApp.Controllers
 
             if (expenseInDb == null)
             {
-                return RedirectToAction("Expenses"); 
+                return RedirectToAction("Expenses");
             }
 
-            return View(expenseInDb); 
+            return View(expenseInDb);
         }
 
 
@@ -87,7 +87,7 @@ namespace SpendApp.Controllers
 
             if (expenseInDb == null)
             {
-               return RedirectToAction("Expenses");
+                return RedirectToAction("Expenses");
             }
 
             _context.Expenses.Remove(expenseInDb);
