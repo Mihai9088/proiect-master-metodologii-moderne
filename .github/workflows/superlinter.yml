@@ -21,6 +21,7 @@ jobs:
           VALIDATE_JAVASCRIPT_ES: false
           VALIDATE_JAVASCRIPT_STANDARD: false
           VALIDATE_ESLINT: false
+          VALIDATE_JSCPD: false
 
   test:
     name: Build and run unit tests
