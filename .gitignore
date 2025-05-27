@@ -1,1 +1,6 @@
 .vs/
+**/bin/
+**/obj/
+deploy_output/
+SpendApp/wwwroot/lib/
+SpendApp.Tests/obj/
